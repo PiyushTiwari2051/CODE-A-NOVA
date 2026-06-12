@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Core Variable Fallbacks & Style Integrations */
+@layer base {
+  body {
+    @apply bg-surface text-text-primary font-sans antialiased;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-bold text-text-primary;
+  }
+
+  /* Monospace font settings */
+  .mono-data {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Custom Micro-Animations */
+
+/* 1. Sidebar Nav Link Left Border Slide & Tint */
+.nav-link-hover {
+  position: relative;
+  transition: all 0.2s ease;
+}
+.nav-link-hover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: #E07B39;
+  transform: scaleY(0);
+  transition: transform 0.2s ease;
+  transform-origin: center;
+}
+.nav-link-hover:hover::after,
+.nav-link-hover.active::after {
+  transform: scaleY(1);
+}
+
+/* 2. Stat Cards Diagonal Texture Overlay */
+.card-texture-overlay {
+  position: relative;
+}
+.card-texture-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  pointer-events: none;
+  background-image: radial-gradient(#1A2B4A 0.5px, transparent 0.5px), radial-gradient(#1A2B4A 0.5px, #ffffff 0.5px);
+  background-size: 8px 8px;
+  background-position: 0 0, 4px 4px;
+}
+
+/* 3. Staggered Row Loading Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.staggered-row {
+  opacity: 0;
+  animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 4. Custom Modal Open Transition */
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-animate-open {
+  animation: scaleUp 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 5. Success Checkmark Drawing Animation */
+@keyframes drawCheck {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.animate-check {
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  animation: drawCheck 0.4s ease-in-out forwards;
+}
+
+/* 6. Notification Bell Swing */
+@keyframes bellSwing {
+  0% { transform: rotate(0); }
+  15% { transform: rotate(15deg); }
+  30% { transform: rotate(-15deg); }
+  45% { transform: rotate(10deg); }
+  60% { transform: rotate(-10deg); }
+  75% { transform: rotate(4deg); }
+  85% { transform: rotate(-4deg); }
+  100% { transform: rotate(0); }
+}
+.bell-swing {
+  animation: bellSwing 0.8s ease-in-out;
+}
+
+/* 7. Low Stock Badge Pulse */
+@keyframes badgePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+.badge-pulse {
+  animation: badgePulse 1.8s infinite ease-in-out;
+}
+
+/* 8. Skeleton Shimmer */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #f0efe9 25%, #e4e2dc 50%, #f0efe9 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+/* Left accent bar on hover for tables */
+.table-row-accent {
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+.table-row-accent::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: #E07B39;
+  transform: scaleY(0);
+  transition: transform 0.2s ease;
+}
+.table-row-accent:hover::before {
+  transform: scaleY(1);
+}
+.table-row-accent:hover {
+  background-color: #F9F7F4 !important;
+}
+
+/* A4 Print View Directives */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .print-area, .print-area * {
+    visibility: visible;
+  }
+  .print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
