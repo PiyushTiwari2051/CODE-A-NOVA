@@ -3,7 +3,15 @@ import { injectStore } from '../api/axios';
 
 // --- AUTH STATE SLICE ---
 const initialToken = localStorage.getItem('token') || null;
-const initialUser = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+let initialUser = null;
+try {
+  const storedUser = localStorage.getItem('user');
+  if (storedUser && storedUser !== 'undefined') {
+    initialUser = JSON.parse(storedUser);
+  }
+} catch (e) {
+  console.error("Failed to parse user from localStorage:", e);
+}
 
 const authSlice = createSlice({
   name: 'auth',

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Eye, EyeOff, Lock, Mail, AlertTriangle, KeyRound } from 'lucide-react';
+import { Eye, EyeOff, Lock, Mail, AlertTriangle, KeyRound, CheckCircle } from 'lucide-react';
 import { loginStart, loginSuccess, loginFailure } from '../../store';
 import api from '../../api/axios';
 import toast from 'react-hot-toast';
