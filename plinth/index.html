@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PLINTH — Spatial Curation & Material Exhibition</title>
+  
+  <!-- Preconnect and load architectural typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="index.css">
+</head>
+<body class="bg-chalk text-charcoal min-h-screen flex flex-col antialiased selection:bg-ultramarine selection:text-white">
+
+  <!-- --- HEADER NAVIGATION --- -->
+  <header class="header border-b border-grout flex items-center justify-between px-24 py-16 sticky top-0 bg-chalk/90 backdrop-blur-md z-40">
+    <div class="brand flex items-center gap-12">
+      <span class="logo-mark"></span>
+      <h1 class="logo-text font-display uppercase tracking-widest font-bold">PLINTH</h1>
+    </div>
+    <div class="header-meta font-mono uppercase text-[10px] tracking-wider text-silver gap-32 hidden sm:flex">
+      <span>Exhibiting: Casts & Modules</span>
+      <span>Index Ref: PL-6061-AX</span>
+      <span>Status: Active Ledger</span>
+    </div>
+    <div class="actions flex items-center gap-16">
+      <a href="../" class="back-link font-mono uppercase text-[10px] tracking-wider hover:text-ultramarine transition-colors">&larr; Main Portal</a>
+    </div>
+  </header>
+
+  <!-- --- MAIN GRID CONTAINER --- -->
+  <main class="grid-container flex-1 grid grid-cols-1 lg:grid-cols-12 min-h-0">
+    
+    <!-- LEFT PANEL: Index & Profile (3 columns) -->
+    <aside class="left-panel lg:col-span-3 border-r border-grout flex flex-col divide-y divide-grout overflow-y-auto">
+      <div class="section-padding py-24 px-24 space-y-16">
+        <span class="label font-mono uppercase text-[10px] tracking-wider text-silver">00 / Gallery Manifesto</span>
+        <p class="body-text text-sm leading-relaxed text-charcoal/80">
+          Plinth is a slow-curated social repository for architects, materials scientists, and designers. We catalogue raw aggregates, structured profiles, and spatial columns.
+        </p>
+      </div>
+      
+      <div class="section-padding py-24 px-24 space-y-16 flex-1">
+        <span class="label font-mono uppercase text-[10px] tracking-wider text-silver">01 / Curated Inquiries</span>
+        <nav class="nav-links flex flex-col gap-8">
+          <button class="exhibit-tab active flex justify-between items-center w-full py-8 text-left transition-all group" data-category="all">
+            <span class="font-display text-xs uppercase tracking-wide group-hover:text-ultramarine">All Specimen</span>
+            <span class="font-mono text-[10px] text-silver group-hover:text-ultramarine">00.</span>
+          </button>
+          <button class="exhibit-tab flex justify-between items-center w-full py-8 text-left transition-all group" data-category="brutalism">
+            <span class="font-display text-xs uppercase tracking-wide group-hover:text-ultramarine">Brutalist Casts</span>
+            <span class="font-mono text-[10px] text-silver group-hover:text-ultramarine">01.</span>
+          </button>
+          <button class="exhibit-tab flex justify-between items-center w-full py-8 text-left transition-all group" data-category="glass">
+            <span class="font-display text-xs uppercase tracking-wide group-hover:text-ultramarine">Sandcast Silicates</span>
+            <span class="font-mono text-[10px] text-silver group-hover:text-ultramarine">02.</span>
+          </button>
+          <button class="exhibit-tab flex justify-between items-center w-full py-8 text-left transition-all group" data-category="metals">
+            <span class="font-display text-xs uppercase tracking-wide group-hover:text-ultramarine">Anodized Framing</span>
+            <span class="font-mono text-[10px] text-silver group-hover:text-ultramarine">03.</span>
+          </button>
+          <button class="exhibit-tab flex justify-between items-center w-full py-8 text-left transition-all group" data-category="terracotta">
+            <span class="font-display text-xs uppercase tracking-wide group-hover:text-ultramarine">Earthen Clay</span>
+            <span class="font-mono text-[10px] text-silver group-hover:text-ultramarine">04.</span>
+          </button>
+        </nav>
+      </div>
+
+      <div class="profile-block py-24 px-24 space-y-16">
+        <span class="label font-mono uppercase text-[10px] tracking-wider text-silver">02 / Lead Curator</span>
+        <div class="flex items-center gap-12">
+          <span class="avatar bg-ultramarine text-white text-xs font-mono w-32 h-32 flex items-center justify-center font-bold">BS</span>
+          <div>
+            <h4 class="font-bold text-xs">@brutal_spa</h4>
+            <p class="text-[10px] text-silver font-mono uppercase">Zurich Architectural Lab</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- CENTER PANEL: Interactive spatial plinth (6 columns) -->
+    <section class="center-panel lg:col-span-6 border-r border-grout flex flex-col overflow-y-auto">
+      
+      <!-- Top header with interactive status -->
+      <div class="plinth-header border-b border-grout px-24 py-16 flex justify-between items-center bg-chalk/50 backdrop-blur-md">
+        <h2 class="font-display text-[11px] uppercase tracking-wider font-bold">Active Plinth Viewport</h2>
+        <div class="controls flex items-center gap-12">
+          <button id="add-block-btn" class="ctrl-btn text-xs font-mono uppercase border border-charcoal hover:bg-charcoal hover:text-white px-12 py-4 transition-colors">
+            + Insert Cube
+          </button>
+          <button id="clear-plinth-btn" class="ctrl-btn text-xs font-mono uppercase border border-charcoal/20 hover:border-charcoal hover:bg-charcoal/5 px-12 py-4 transition-colors">
+            Clear Plinth
+          </button>
+        </div>
+      </div>
+      
+      <!-- 3D Isometric Viewport -->
+      <div class="viewport-wrapper flex-grow flex items-center justify-center relative p-24 bg-dots">
+        <!-- Coordinate indicators on edges -->
+        <span class="coordinate-label top-left font-mono text-[9px] uppercase tracking-wider text-silver">GRID SEC_01 (47.37N, 8.54E)</span>
+        <span class="coordinate-label bottom-right font-mono text-[9px] uppercase tracking-wider text-silver">ALT_Z_INDICATOR: H_VAL</span>
+        
+        <!-- 3D Transform Plinth Container -->
+        <div class="plinth-3d-scene">
+          <div class="plinth-platform" id="blocks-stage">
+            <!-- 3D blocks will be rendered here dynamically via JS -->
+          </div>
+        </div>
+        
+        <!-- Hover instruction overlay -->
+        <div class="hover-instruction font-mono text-[10px] text-silver uppercase pointer-events-none absolute bottom-16">
+          [ Hover/Move cursor to tilt gallery perspective ]
+        </div>
+      </div>
+      
+      <!-- Horizontal specimens grid list -->
+      <div class="specimens-list border-t border-grout overflow-x-auto whitespace-nowrap scrollbar-none flex divide-x divide-grout bg-chalk min-h-[120px]">
+        <!-- curations dynamically rendered via JS -->
+      </div>
+      
+    </section>
+
+    <!-- RIGHT PANEL: Spec manifest & curation log (3 columns) -->
+    <aside class="right-panel lg:col-span-3 flex flex-col divide-y divide-grout overflow-y-auto bg-chalk">
+      
+      <!-- Active Spec manifest -->
+      <div class="specimen-viewer py-24 px-24 space-y-16">
+        <span class="label font-mono uppercase text-[10px] tracking-wider text-silver">03 / Specimen Manifest</span>
+        
+        <div id="spec-data" class="space-y-16 animate-fade">
+          <!-- Dynamically filled with selected item specs -->
+          <div class="header-block">
+            <h3 class="font-display text-sm uppercase tracking-wider font-bold text-charcoal" id="spec-title">Concrete Column Cast</h3>
+            <span class="font-mono text-[10px] text-ultramarine" id="spec-id">#CONC-C09</span>
+          </div>
+          
+          <table class="w-full text-xs border-collapse">
+            <tr class="border-b border-grout/50">
+              <td class="py-8 font-mono text-[10px] text-silver uppercase">Material</td>
+              <td class="py-8 font-semibold text-right" id="spec-material">Portland Aggregates</td>
+            </tr>
+            <tr class="border-b border-grout/50">
+              <td class="py-8 font-mono text-[10px] text-silver uppercase">Dimensions</td>
+              <td class="py-8 font-mono text-right" id="spec-dimensions">80 x 30 x 30 cm</td>
+            </tr>
+            <tr class="border-b border-grout/50">
+              <td class="py-8 font-mono text-[10px] text-silver uppercase">Stress load</td>
+              <td class="py-8 font-semibold text-right" id="spec-stress">450 kN/m²</td>
+            </tr>
+            <tr class="border-b border-grout/50">
+              <td class="py-8 font-mono text-[10px] text-silver uppercase">Porosity</td>
+              <td class="py-8 font-mono text-right" id="spec-porosity">8.2%</td>
+            </tr>
+          </table>
+          
+          <p class="text-xs leading-relaxed text-charcoal/80" id="spec-description">
+            Cast in a bespoke plywood shuttering. Features structural grid impressions and aggregate exposure along the chamfered relief edges.
+          </p>
+        </div>
+      </div>
+
+      <!-- Add Curation Form -->
+      <div class="curate-form py-24 px-24 space-y-16 flex-grow bg-chalk">
+        <span class="label font-mono uppercase text-[10px] tracking-wider text-silver">04 / Catalog Log</span>
+        
+        <form id="curation-form" class="space-y-12">
+          <div class="field space-y-4">
+            <label class="block font-mono text-[9px] uppercase tracking-wider text-silver">Specimen Name</label>
+            <input type="text" id="form-name" required class="form-input w-full text-xs px-12 py-8 bg-chalk border border-grout focus:outline-none focus:border-ultramarine font-sans text-charcoal" placeholder="E.g. Clay Masonry Box">
+          </div>
+          
+          <div class="grid grid-cols-2 gap-12">
+            <div class="field space-y-4">
+              <label class="block font-mono text-[9px] uppercase tracking-wider text-silver">Material Category</label>
+              <select id="form-category" class="form-select w-full text-xs px-12 py-8 bg-chalk border border-grout focus:outline-none focus:border-ultramarine font-sans text-charcoal">
+                <option value="brutalism">Brutalist</option>
+                <option value="glass">Silicate</option>
+                <option value="metals">Metal Frame</option>
+                <option value="terracotta">Clay</option>
+              </select>
+            </div>
+            
+            <div class="field space-y-4">
+              <label class="block font-mono text-[9px] uppercase tracking-wider text-silver">Height (Cubes)</label>
+              <input type="number" id="form-height" required min="1" max="4" value="2" class="form-input w-full text-xs px-12 py-8 bg-chalk border border-grout focus:outline-none focus:border-ultramarine font-mono text-charcoal">
+            </div>
+          </div>
+
+          <div class="field space-y-4">
+            <label class="block font-mono text-[9px] uppercase tracking-wider text-silver">Composition Notes</label>
+            <textarea id="form-desc" required rows="3" class="form-input w-full text-xs px-12 py-8 bg-chalk border border-grout focus:outline-none focus:border-ultramarine font-sans text-charcoal leading-relaxed" placeholder="Detailed mineral contents, heat ratings, or design intents..."></textarea>
+          </div>
+          
+          <button type="submit" class="w-full py-12 bg-ultramarine text-white hover:bg-ultramarine/90 text-xs font-mono uppercase tracking-wider transition-colors font-bold">
+            Curate Specimen
+          </button>
+        </form>
+      </div>
+
+    </aside>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

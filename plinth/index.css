@@ -1,0 +1,328 @@
+/* PLINTH CSS STYLESHEET */
+
+:root {
+  --color-chalk: #F9F9F8;
+  --color-charcoal: #1F2022;
+  --color-ultramarine: #0F2FD9;
+  --color-grout: #E2E2DF;
+  --color-silver: #7F8082;
+  
+  --font-display: 'Syncopate', sans-serif;
+  --font-body: 'Instrument Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+  
+  --rotate-x: -30deg;
+  --rotate-y: 45deg;
+}
+
+/* Reset & Foundation */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-chalk);
+  color: var(--color-charcoal);
+  font-family: var(--font-body);
+  font-size: 14px;
+}
+
+/* Typography Utility Classes */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.15em;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+/* Custom logo mark - minimalist solid black block */
+.logo-mark {
+  display: block;
+  width: 14px;
+  height: 14px;
+  background-color: var(--color-charcoal);
+  transform: rotate(45deg);
+}
+
+/* Grid & Layout System */
+.grid-container {
+  display: grid;
+  height: calc(100vh - 64px);
+}
+
+.border-r {
+  border-right: 1px solid var(--color-grout);
+}
+
+.border-b {
+  border-bottom: 1px solid var(--color-grout);
+}
+
+.border-t {
+  border-top: 1px solid var(--color-grout);
+}
+
+.divide-y > * + * {
+  border-top: 1px solid var(--color-grout);
+}
+
+.divide-x > * + * {
+  border-left: 1px solid var(--color-grout);
+}
+
+/* Panels */
+.left-panel, .right-panel {
+  background-color: var(--color-chalk);
+}
+
+.center-panel {
+  background-color: #F3F3F1;
+}
+
+/* Dot grid viewport overlay */
+.bg-dots {
+  background-image: radial-gradient(var(--color-grout) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Exhibit Buttons / Tabs */
+.exhibit-tab {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+}
+
+.exhibit-tab::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-ultramarine);
+  transition: width 0.3s ease;
+}
+
+.exhibit-tab:hover::after, .exhibit-tab.active::after {
+  width: 100%;
+}
+
+.exhibit-tab.active .font-display {
+  color: var(--color-ultramarine);
+}
+
+/* Profile Block Avatar */
+.avatar {
+  border-radius: 0; /* Strict no border radius */
+}
+
+/* 3D Isometric Scene Viewport */
+.plinth-3d-scene {
+  perspective: 1000px;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plinth-platform {
+  width: 180px;
+  height: 180px;
+  background-color: rgba(31, 32, 34, 0.03);
+  border: 1px solid var(--color-grout);
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--rotate-x)) rotateY(var(--rotate-y));
+  transition: transform 0.1s linear;
+}
+
+/* Grid lines inside the 3D platform */
+.plinth-platform::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(31,32,34,0.08) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(31,32,34,0.08) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* 3D Cube Construction */
+.cube-3d {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cube-face {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border: 1px solid rgba(31, 32, 34, 0.2);
+}
+
+/* Isometric Cube Faces */
+.cube-face.front  { transform: rotateY(0deg) translateZ(30px); }
+.cube-face.back   { transform: rotateY(180deg) translateZ(30px); }
+.cube-face.left   { transform: rotateY(-90deg) translateZ(30px); }
+.cube-face.right  { transform: rotateY(90deg) translateZ(30px); }
+.cube-face.top    { transform: rotateX(90deg) translateZ(30px); }
+.cube-face.bottom { transform: rotateX(-90deg) translateZ(30px); }
+
+/* Material Themes for 3D Cubes */
+/* 1. Brutalist Concrete */
+.cube-brutalism .cube-face {
+  background-color: #C0C0BA;
+}
+.cube-brutalism .cube-face.top { background-color: #D3D3CD; }
+.cube-brutalism .cube-face.right { background-color: #ACACA6; }
+
+/* 2. Sandcast Silicate (Glass) */
+.cube-glass .cube-face {
+  background-color: rgba(186, 218, 215, 0.6);
+  border: 1px solid rgba(15, 47, 217, 0.3);
+  backdrop-filter: blur(2px);
+}
+.cube-glass .cube-face.top { background-color: rgba(206, 238, 235, 0.7); }
+.cube-glass .cube-face.right { background-color: rgba(166, 198, 195, 0.5); }
+
+/* 3. Anodized Metals */
+.cube-metals .cube-face {
+  background-color: #3E4249;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.cube-metals .cube-face.top { background-color: #53575F; }
+.cube-metals .cube-face.right { background-color: #2F3237; }
+
+/* 4. Terracotta Clay */
+.cube-terracotta .cube-face {
+  background-color: #C87456;
+}
+.cube-terracotta .cube-face.top { background-color: #DB8769; }
+.cube-terracotta .cube-face.right { background-color: #B26143; }
+
+/* specimens-list item horizontal cards */
+.specimen-card {
+  display: inline-block;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  min-width: 180px;
+  background-color: var(--color-chalk);
+}
+
+.specimen-card:hover {
+  background-color: rgba(15, 47, 217, 0.02);
+}
+
+.specimen-card.active {
+  background-color: var(--color-charcoal);
+  color: var(--color-chalk);
+}
+
+.specimen-card.active .text-silver {
+  color: var(--color-silver);
+}
+
+/* UI Elements & Forms */
+.form-input, .form-select {
+  border-radius: 0; /* strict no rounded corners */
+}
+
+/* Viewport edge coordinates position */
+.coordinate-label {
+  position: absolute;
+  pointer-events: none;
+}
+
+.coordinate-label.top-left {
+  top: 16px;
+  left: 16px;
+}
+
+.coordinate-label.bottom-right {
+  bottom: 16px;
+  right: 16px;
+}
+
+/* Animation utilities */
+.animate-fade {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Utility layout extensions */
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-grow { flex-grow: 1; }
+.flex-shrink-0 { flex-shrink: 0; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.gap-8 { gap: 8px; }
+.gap-12 { gap: 12px; }
+.gap-16 { gap: 16px; }
+.gap-32 { gap: 32px; }
+.space-y-4 > * + * { margin-top: 4px; }
+.space-y-6 > * + * { margin-top: 6px; }
+.space-y-8 > * + * { margin-top: 8px; }
+.space-y-12 > * + * { margin-top: 12px; }
+.space-y-16 > * + * { margin-top: 16px; }
+.space-y-24 > * + * { margin-top: 24px; }
+.grid { display: grid; }
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.gap-24 { gap: 24px; }
+.py-8 { padding-top: 8px; padding-bottom: 8px; }
+.py-12 { padding-top: 12px; padding-bottom: 12px; }
+.py-16 { padding-top: 16px; padding-bottom: 16px; }
+.py-24 { padding-top: 24px; padding-bottom: 24px; }
+.px-12 { padding-left: 12px; padding-right: 12px; }
+.px-20 { padding-left: 20px; padding-right: 20px; }
+.px-24 { padding-left: 24px; padding-right: 24px; }
+.p-24 { padding: 24px; }
+.text-xs { font-size: 11px; }
+.text-sm { font-size: 13px; }
+.text-lg { font-size: 16px; }
+.text-right { text-align: right; }
+.text-white { color: #ffffff; }
+.text-charcoal { color: var(--color-charcoal); }
+.text-silver { color: var(--color-silver); }
+.text-ultramarine { color: var(--color-ultramarine); }
+.bg-chalk { background-color: var(--color-chalk); }
+.bg-ultramarine { background-color: var(--color-ultramarine); }
+.uppercase { text-transform: uppercase; }
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.tracking-wide { tracking: 0.05em; }
+.tracking-wider { tracking: 0.1em; }
+.tracking-widest { tracking: 0.2em; }
+.hidden { display: none; }
+.overflow-y-auto { overflow-y: auto; }
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Responsive adjustments */
+@media (min-width: 640px) {
+  .sm:flex { display: flex; }
+}
+
+@media (min-width: 1024px) {
+  .lg:col-span-3 { grid-column: span 3 / span 3; }
+  .lg:col-span-6 { grid-column: span 6 / span 6; }
+  .lg:col-span-12 { grid-column: span 12 / span 12; }
+}
