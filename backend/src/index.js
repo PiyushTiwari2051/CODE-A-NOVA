@@ -64,6 +64,16 @@ app.use(morgan('dev'));
 // Core Routes
 app.use('/api', apiRoutes);
 
+// Welcome Route
+app.get('/', (req, res) => {
+  res.status(200).json({
+    name: 'Precision Ledger API',
+    message: 'Welcome to the Precision Ledger Backend API',
+    status: 'healthy',
+    database: isMock() ? 'local_json_db' : 'mongodb_atlas'
+  });
+});
+
 // Health Check
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'healthy', database: isMock() ? 'local_json_db' : 'mongodb_atlas' });
