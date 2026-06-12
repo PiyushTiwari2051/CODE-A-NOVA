@@ -130,10 +130,17 @@ Open **[http://localhost:5175/](http://localhost:5175/)** in your browser. Click
 
 ---
 
+## 🚀 Live Deployments
+
+- **Frontend Website (Hosted on Netlify):** [https://precision-ledger-2051.netlify.app](https://precision-ledger-2051.netlify.app)
+- **Backend API Server (Hosted on Vercel):** [https://backend-two-snowy-22.vercel.app](https://backend-two-snowy-22.vercel.app)
+
+---
+
 ## ☁️ Deployment Configurations
 
 ### Backend Deployment (Vercel)
-The backend project root contains a Vercel routing manifest. Create a `vercel.json` file inside the `backend/` directory:
+The backend project root contains a Vercel routing manifest inside `backend/vercel.json`:
 ```json
 {
   "version": 2,
@@ -143,12 +150,15 @@ The backend project root contains a Vercel routing manifest. Create a `vercel.js
 ```
 
 ### Frontend Deployment (Netlify)
-The frontend uses client-side routing. Create a redirection rule inside `frontend/public/_redirects` or `frontend/netlify.toml`:
+The frontend uses client-side routing configured in `frontend/netlify.toml`:
 ```toml
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+[build]
+  publish = "dist"
+  command = "npm run build"
 ```
-- **Build Command:** `npm run build`
-- **Publish Directory:** `dist`
+
