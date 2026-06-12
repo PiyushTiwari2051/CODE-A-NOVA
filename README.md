@@ -7,6 +7,8 @@
     <a href="https://precision-ledger-2051.netlify.app" target="_blank"><strong>🚀 Live Frontend Website</strong></a>
     &nbsp;&bull;&nbsp;
     <a href="https://backend-two-snowy-22.vercel.app" target="_blank"><strong>⚡ Live Backend API</strong></a>
+    &nbsp;&bull;&nbsp;
+    <a href="https://plinth-spatial.netlify.app" target="_blank"><strong>🪨 Plinth Social Platform</strong></a>
   </p>
 </div>
 
