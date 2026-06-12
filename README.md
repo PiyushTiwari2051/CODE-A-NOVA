@@ -3,6 +3,11 @@
 <div align="center">
   <p><strong>A premium Swiss-financial instrument meets a craftsman's workshop ledger.</strong></p>
   <p>Designed for artisan retail shopkeepers who demand absolute visual clarity and bookkeeping authority.</p>
+  <p>
+    <a href="https://precision-ledger-2051.netlify.app" target="_blank"><strong>🚀 Live Frontend Website</strong></a>
+    &nbsp;&bull;&nbsp;
+    <a href="https://backend-two-snowy-22.vercel.app" target="_blank"><strong>⚡ Live Backend API</strong></a>
+  </p>
 </div>
 
 ---
