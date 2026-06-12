@@ -21,8 +21,12 @@ const PORT = process.env.PORT || 5000;
 app.use(helmet());
 app.use(cors({
   origin: (origin, callback) => {
-    // Allow all local hosts and CLI origins in development, or static domains
-    if (!origin || /^https?:\/\/localhost(:\d+)?$/.test(origin) || origin === process.env.CLIENT_URL) {
+    // Allow all local hosts, Netlify subdomains, and CLIENT_URL
+    if (
+      !origin || 
+      /^https?:\/\/(localhost(:\d+)?|.*\.netlify\.app)$/.test(origin) || 
+      origin === process.env.CLIENT_URL
+    ) {
       callback(null, true);
     } else {
       callback(null, false);

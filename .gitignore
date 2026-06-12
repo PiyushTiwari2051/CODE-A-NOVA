@@ -21,3 +21,6 @@ frontend/.env
 .vscode/
 .idea/
 Thumbs.db
+
+# Local Netlify folder
+.netlify
