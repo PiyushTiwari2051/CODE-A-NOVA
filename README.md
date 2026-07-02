@@ -14,7 +14,7 @@
 
 ---
 
-## 🏛️ System Architecture Diagram
+# 🏛️ System Architecture Diagram
 
 Below is the design outline of the **Precision Ledger** monorepo layout, illustrating client state controls and the dynamic local file persistence fallback:
 
@@ -42,7 +42,7 @@ graph TD
 
 ---
 
-## ✨ Signature Design Language & Visual Aesthetics
+# ✨ Signature Design Language & Visual Aesthetics
 
 Precision Ledger is crafted following a strict, editorial **"Precision Ledger"** theme. Every element is bespoke and avoids generic template layouts:
 
@@ -58,7 +58,7 @@ Precision Ledger is crafted following a strict, editorial **"Precision Ledger"**
 
 ---
 
-## ⚙️ Monorepo Features Matrix
+# ⚙️ Monorepo Features Matrix
 
 | Feature | Description | Security / Spec |
 | :--- | :--- | :--- |
@@ -71,7 +71,7 @@ Precision Ledger is crafted following a strict, editorial **"Precision Ledger"**
 
 ---
 
-## 📂 Project Directory Map
+# 📂 Project Directory Map
 
 ```text
 CODE-A-NOVA/
@@ -99,15 +99,15 @@ CODE-A-NOVA/
 
 ---
 
-## 🚀 Local Installation & Startup Guide
+# 🚀 Local Installation & Startup Guide
 
 Follow these steps to spin up the local server and client node.
 
-### Prerequisites
+## Prerequisites
 - Node.js (v20+ recommended)
 - npm (v10+ recommended)
 
-### 1. Setup Backend Server
+## 1. Setup Backend Server
 ```bash
 # Navigate to the backend directory
 cd backend
@@ -122,7 +122,7 @@ npm start
 - **Demo Admin Email:** `admin@precisionledger.com`
 - **Demo Admin Password:** `password123`
 
-### 2. Setup Frontend Client
+## 2. Setup Frontend Client
 ```bash
 # Navigate to the frontend directory
 cd ../frontend
