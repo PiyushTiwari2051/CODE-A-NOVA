@@ -122,7 +122,7 @@ npm start
 - **Demo Admin Email:** `admin@precisionledger.com`
 - **Demo Admin Password:** `password123`
 
-## 2. Setup Frontend Client
+# 2. Setup Frontend Client
 ```bash
 # Navigate to the frontend directory
 cd ../frontend
@@ -137,7 +137,7 @@ Open **[http://localhost:5175/](http://localhost:5175/)** in your browser. Click
 
 ---
 
-## 🚀 Live Deployments
+# 🚀 Live Deployments
 
 - **Frontend Website (Hosted on Netlify):** [https://precision-ledger-2051.netlify.app](https://precision-ledger-2051.netlify.app)
 - **Backend API Server (Hosted on Vercel):** [https://backend-two-snowy-22.vercel.app](https://backend-two-snowy-22.vercel.app)
@@ -146,7 +146,7 @@ Open **[http://localhost:5175/](http://localhost:5175/)** in your browser. Click
 
 ## ☁️ Deployment Configurations
 
-### Backend Deployment (Vercel)
+## Backend Deployment (Vercel)
 The backend project root contains a Vercel routing manifest inside `backend/vercel.json`:
 ```json
 {
@@ -156,7 +156,7 @@ The backend project root contains a Vercel routing manifest inside `backend/verc
 }
 ```
 
-### Frontend Deployment (Netlify)
+## Frontend Deployment (Netlify)
 The frontend uses client-side routing configured in `frontend/netlify.toml`:
 ```toml
 [[redirects]]
